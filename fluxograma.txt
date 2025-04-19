@@ -1,0 +1,24 @@
+digitar arquivo > arquivo criado.
+
+deseja ver banco de dados? s = exibe
+deseja criar mais arquivos? s = digitar arquivo > arquivo criado.
+chama dnv (deseja ver bando de dados?)
+
+
+deseja ver banco de dados? n > deseja criar mais arquivos? s > digitar arquivo > arquivo criado.
+chama dnv (deseja ver bando de dados?)
+
+
+
+deseja criar mais arquivos? n
+deseja ver banco de dados ou fechar programa?
+
+"ver bando de dados" > deseja ver banco de dados? s = exibe
+deseja criar mais arquivos? s = digitar arquivo > arquivo criado.
+chama dnv (deseja ver bando de dados?)
+
+"fechar programa" > fecha
+
+
+
+
