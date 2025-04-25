@@ -1,10 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdint.h>
 #include <string.h>
 
 // Declaração das funções (prototipação)
 int banco_arquivos(char arquivos[][50], int *quantidade);
 int criar_arquivo_novo(char arquivos[][50], int *quantidade);
+int deletar_arquivo(char arquivos[][50], int *quantidade);
 int fechar_programa();
 
 // Definição do tamanho máximo do banco
@@ -42,14 +44,26 @@ int banco_arquivos(char arquivos[][50], int *quantidade) {
         printf("Digite 's' para sim ou 'n' para não: ");
         scanf("%s", choice);
 
-        // sim
+        // sim, aadicionar arquivo e deletar arquivo
         if (strcmp(choice, "s") == 0 || strcmp(choice, "S") == 0) {
+            char delchoice[3]; // <-- MOVIDO PRA CÁ
+        
             printf("Banco de arquivos:\n");
             for (int i = 0; i < *quantidade; i++) {
                 printf("%d. %s\n", i + 1, arquivos[i]);
             }
+        
             printf("Deseja Criar outro arquivo? (s/n): ");
             scanf("%s", newchoice);
+        
+            printf("Deseja deletar um arquivo? (s/n): ");
+            scanf("%s", delchoice);
+            if (strcmp(delchoice, "s") == 0 || strcmp(delchoice, "S") == 0) {
+                deletar_arquivo(arquivos, quantidade);
+            }
+        
+
+
             // sim, criar novo arquivo
             if (strcmp(newchoice, "s") == 0 || strcmp(newchoice, "S") == 0) {
                 printf("Criando novo arquivo...\n");
@@ -97,6 +111,40 @@ int criar_arquivo_novo(char arquivos[][50], int *quantidade) {
 
     return 0;
 }
+
+int deletar_arquivo(char arquivos[][50], int *quantidade) {
+    int index;
+
+    if (*quantidade == 0) {
+        printf("Não há arquivos para deletar.\n");
+        return 0;
+    }
+
+    // Mostrar os arquivos
+    printf("Arquivos disponíveis para deletar:\n");
+    for (int i = 0; i < *quantidade; i++) {
+        printf("%d. %s\n", i + 1, arquivos[i]);
+    }
+
+    printf("Digite o número do arquivo que deseja deletar: ");
+    scanf("%d", &index);
+
+    if (index < 1 || index > *quantidade) {
+        printf("Índice inválido.\n");
+        return 0;
+    }
+
+    // Remover o arquivo e ajustar o vetor
+    for (int i = index - 1; i < *quantidade - 1; i++) {
+        strcpy(arquivos[i], arquivos[i + 1]);
+    }
+    (*quantidade)--;
+
+    printf("Arquivo deletado com sucesso!\n");
+
+    return 0;
+}
+
 
 // Função para fechar o programa
 int fechar_programa() {

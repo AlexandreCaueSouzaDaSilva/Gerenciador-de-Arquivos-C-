@@ -1,5 +1,5 @@
 CCOMPILER = gcc
-PROJECT = gerenciador.c
+PROJECT = Gerenciador-de-Arquivos-C-/gerenciador.c
 CFLAGS = -Wall
 default : all run
 all :
